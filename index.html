@@ -21,12 +21,13 @@ body {
     background: #111;
 }
 
-/* BACKGROUND SLIDESHOW */
+/* ================= BACKGROUND SLIDESHOW ================= */
 
 .slideshow {
     position: fixed;
     inset: 0;
     z-index: -3;
+    background: #111;
 }
 
 .slide {
@@ -34,36 +35,75 @@ body {
     inset: 0;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     opacity: 0;
-    animation: slideshow 20s infinite;
+    animation: slideshow 40s infinite;
 }
 
+/* EIGHT BACKGROUND PICTURES */
+
 .slide:nth-child(1) {
-    background-image: url('p1.jpeg');
+    background-image: url('p2.jpeg');
     animation-delay: 0s;
 }
 
 .slide:nth-child(2) {
-    background-image: url('p2.jpeg');
+    background-image: url('p3.jpeg');
     animation-delay: 5s;
 }
 
 .slide:nth-child(3) {
-    background-image: url('p3.jpeg');
+    background-image: url('p5.jpeg');
     animation-delay: 10s;
 }
 
 .slide:nth-child(4) {
-    background-image: url('p4.jpeg');
+    background-image: url('p6.jpeg');
     animation-delay: 15s;
 }
 
+.slide:nth-child(5) {
+    background-image: url('p7.jpeg');
+    animation-delay: 20s;
+}
+
+.slide:nth-child(6) {
+    background-image: url('p8.jpeg');
+    animation-delay: 25s;
+}
+
+.slide:nth-child(7) {
+    background-image: url('p7.jpeg');
+    animation-delay: 30s;
+}
+
+.slide:nth-child(8) {
+    background-image: url('p9.jpeg');
+    animation-delay: 35s;
+}
+
+/* SLIDESHOW TRANSITION */
+
 @keyframes slideshow {
-    0% { opacity: 0; }
-    10% { opacity: 1; }
-    25% { opacity: 1; }
-    35% { opacity: 0; }
-    100% { opacity: 0; }
+    0% {
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    12.5% {
+        opacity: 1;
+    }
+
+    17.5% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
 }
 
 /* DARK OVERLAY */
@@ -207,6 +247,10 @@ button:hover {
 <body>
 
 <div class="slideshow">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
     <div class="slide"></div>
     <div class="slide"></div>
     <div class="slide"></div>
