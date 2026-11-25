@@ -1,0 +1,379 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Georgia', serif;
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+    background: #111;
+}
+
+/* BACKGROUND SLIDESHOW */
+
+.slideshow {
+    position: fixed;
+    inset: 0;
+    z-index: -3;
+}
+
+.slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    animation: slideshow 20s infinite;
+}
+
+.slide:nth-child(1) {
+    background-image: url('photo1.jpg');
+    animation-delay: 0s;
+}
+
+.slide:nth-child(2) {
+    background-image: url('photo2.jpg');
+    animation-delay: 5s;
+}
+
+.slide:nth-child(3) {
+    background-image: url('photo3.jpg');
+    animation-delay: 10s;
+}
+
+.slide:nth-child(4) {
+    background-image: url('photo4.jpg');
+    animation-delay: 15s;
+}
+
+@keyframes slideshow {
+    0% { opacity: 0; }
+    10% { opacity: 1; }
+    25% { opacity: 1; }
+    35% { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+/* DARK OVERLAY */
+
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.60);
+    z-index: -2;
+}
+
+/* MAIN CONTENT */
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+}
+
+/* NAME */
+
+.name {
+    font-size: clamp(38px, 7vw, 75px);
+    color: #ffd6e7;
+    text-shadow: 0 0 20px #ff4d94;
+    margin-bottom: 12px;
+    animation: fadeDown 2s ease;
+}
+
+.subtitle {
+    font-size: 18px;
+    letter-spacing: 3px;
+    margin-bottom: 35px;
+    color: #fff;
+}
+
+/* BUTTONS */
+
+button {
+    border: none;
+    padding: 15px 30px;
+    border-radius: 40px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+.play-btn {
+    background: #ff4d94;
+    color: white;
+    box-shadow: 0 0 20px #ff4d94;
+}
+
+.message-btn {
+    background: white;
+    color: #d63384;
+}
+
+button:hover {
+    transform: scale(1.08);
+}
+
+/* BIRTHDAY MESSAGE */
+
+.message-box {
+    display: none;
+    background: rgba(255,255,255,0.94);
+    color: #333;
+    max-width: 550px;
+    padding: 30px;
+    border-radius: 20px;
+    margin-top: 20px;
+    line-height: 1.8;
+    animation: appear 1s ease;
+    max-height: 55vh;
+    overflow-y: auto;
+}
+
+.message-box h2 {
+    color: #d63384;
+    margin-bottom: 15px;
+}
+
+.message-box p {
+    font-size: 17px;
+}
+
+/* ANIMATIONS */
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeDown {
+    from {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* CONFETTI */
+
+#confetti {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+@media(max-width: 600px) {
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .message-box {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="slideshow">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+</div>
+
+<div class="overlay"></div>
+
+<canvas id="confetti"></canvas>
+
+<main class="container">
+
+    <h1 class="name">HAPPY BIRTHDAY, ANGEL ❤️</h1>
+
+    <p class="subtitle">
+        TODAY IS ALL ABOUT YOU ✨
+    </p>
+
+    <button class="play-btn" onclick="playSong()">
+        ▶ Play Me 🎵
+    </button>
+
+    <button class="message-btn" onclick="readMessage()">
+        💌 Read Your Birthday Message
+    </button>
+
+    <div class="message-box" id="messageBox">
+
+        <h2>Happy Birthday, Beautiful! ❤️</h2>
+
+        <p>
+            Today is a special day because the world was blessed
+            with someone as amazing as you.
+            <br><br>
+            May your new age bring you endless happiness,
+            beautiful memories, genuine love and countless
+            reasons to smile.
+            <br><br>
+            May every dream in your heart find its way into
+            reality. Never forget how special you are and
+            how much you deserve all the beautiful things
+            life has to offer.
+            <br><br>
+            Keep smiling, keep shining and never stop being
+            the wonderful person you are.
+            <br><br>
+            Wishing you a birthday as beautiful as your soul.
+            ❤️🎂🥂
+        </p>
+
+        <h2 style="margin-top:20px;">
+            HAPPY BIRTHDAY! 🎉❤️
+        </h2>
+
+    </div>
+
+</main>
+
+<!-- BACKGROUND MUSIC -->
+
+<audio id="birthdaySong" loop>
+    <source src="birthday-song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+/* MUSIC */
+
+function playSong() {
+    const song = document.getElementById("birthdaySong");
+    const button = document.querySelector(".play-btn");
+
+    if (song.paused) {
+        song.play().then(() => {
+            button.innerHTML = "❚❚ Pause Music 🎵";
+        }).catch(() => {
+            button.innerHTML = "Tap to Play Again 🎵";
+        });
+    } else {
+        song.pause();
+        button.innerHTML = "▶ Play Me 🎵";
+    }
+}
+
+/* READ MESSAGE */
+
+function readMessage() {
+    const message = document.getElementById("messageBox");
+
+    if (message.style.display === "block") {
+        message.style.display = "none";
+    } else {
+        message.style.display = "block";
+    }
+}
+
+/* CONFETTI ANIMATION */
+
+const canvas = document.getElementById("confetti");
+const ctx = canvas.getContext("2d");
+
+let pieces = [];
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+function createConfetti() {
+    const colors = [
+        "#ff4d94",
+        "#ffd700",
+        "#00e5ff",
+        "#ffffff",
+        "#b967ff",
+        "#ff7b00"
+    ];
+
+    for (let i = 0; i < 100; i++) {
+        pieces.push({
+            x: Math.random() * canvas.width,
+            y: -20 - Math.random() * 100,
+            size: Math.random() * 8 + 4,
+            speed: Math.random() * 4 + 2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * 360,
+            rotationSpeed: Math.random() * 8 - 4
+        });
+    }
+}
+
+function animateConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    pieces.forEach((p, index) => {
+        p.y += p.speed;
+        p.rotation += p.rotationSpeed;
+
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation * Math.PI / 180);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+        ctx.restore();
+
+        if (p.y > canvas.height + 20) {
+            pieces.splice(index, 1);
+        }
+    });
+
+    requestAnimationFrame(animateConfetti);
+}
+
+animateConfetti();
+
+/* POP CONFETTI EVERY 3 SECONDS */
+
+createConfetti();
+
+setInterval(() => {
+    createConfetti();
+}, 3000);
+
+</script>
+
+</body>
+</html>
